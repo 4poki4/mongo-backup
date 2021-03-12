@@ -16,6 +16,4 @@ COMPRESSION	Use either Gzip (GZ), Bzip2 (BZ), XZip (XZ), or none (NONE). (Defaul
 MD5	Generate MD5 Sum in Directory, TRUE or FALSE (Default TRUE)
 ```
 volumes: 
-- ./db-backups/hourly:/backups/hourly
-- ./db-backups/daily:/backups/daily
-- ./db-backups/mounthly:/backups/mounthly
+- ./db-backups:/backups
