@@ -9,6 +9,4 @@ RUN chmod +x /etc/periodic/mounthly/* /etc/periodic/daily/*
 RUN apk update && apk del zabbix-agent
 RUN rm /usr/sbin/zabbix_agentd /usr/sbin/zabbix_sender
 RUN rm -rf /etc/fix-attrs.d/02-zabbix /etc/services.available/03-zabbix /etc/cont-init.d/03-zabbix
-CMD mkdir -p /backups/mounthly
-CMD mkdir -p /backups/daily
 CMD /init
