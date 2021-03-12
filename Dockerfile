@@ -6,8 +6,8 @@ ENV DB_CLEANUP_TIME=1440
 COPY mounth.sh /etc/periodic/mounthly/mounth.sh
 COPY day.sh /etc/periodic/daily/day.sh
 RUN chmod +x /etc/periodic/mounthly/* /etc/periodic/daily/*
-RUN mkdir -p /backups/mounthly
-RUN mkdir -p /backups/daily
 RUN apk update && apk del zabbix-agent
 RUN rm /usr/sbin/zabbix_agentd /usr/sbin/zabbix_sender
 RUN rm -rf /etc/fix-attrs.d/02-zabbix /etc/services.available/03-zabbix /etc/cont-init.d/03-zabbix
+CMD mkdir -p /backups/mounthly
+CMD mkdir -p /backups/daily
