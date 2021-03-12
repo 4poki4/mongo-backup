@@ -1,5 +1,5 @@
 FROM tiredofit/mongodb-backup
-ENV DB_DUMP_TARGET=/backups/hourly
+ENV DB_DUMP_TARGET=/backups/today
 ENV MD5=FALSE
 ENV DB_DUMP_DEBUG=FALSE
 ENV DB_CLEANUP_TIME=1440
