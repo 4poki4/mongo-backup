@@ -17,3 +17,17 @@ MD5	Generate MD5 Sum in Directory, TRUE or FALSE (Default TRUE)
 ```
 volumes: 
 - ./db-backups:/backups
+```
+  mongo-backup:
+    container_name: mongo-backup
+    image: 4poki4/mongo-backup
+    volumes:
+      - ./db-backups:/backups
+    environment:
+      DB_HOST: mongo
+      DB_NAME: mongo
+      DB_USER: mongo
+      DB_PASS: mongo
+      DB_DUMP_FREQ: 30
+      COMPRESSION: XZ
+```
