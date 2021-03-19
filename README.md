@@ -38,3 +38,10 @@ One-string restore command:
 ```
 docker-compose exec mongo-backup /bin/sh -c 'cd /tmp && echo " " && find /backups -type f -name *.gz && echo " " && echo "Copy the archive path above and paste here:" && read file && tar xfpvz $file && dir=`find /tmp -type d -name *${DB_NAME}*` && echo $dir && mongorestore -u ${DB_USER} --host ${DB_HOST} --port 27017 -p ${DB_PASS} --db "${DB_NAME}" --drop --dir ${dir} && rm -rf /tmp/*'
 ```
+
+Sort files with cron:
+```
+# mongo backups sort
+59 23 * * * root /bin/cp /opt/app/var/backups/today/`/bin/ls -1 /opt/app/var/backups/today | /bin/tail -1` /opt/app/var/backups/daily/
+58 23 28 * * root /bin/cp /opt/app/var/backups/daily/`/bin/ls -1 /opt/app/var/backups/daily | /bin/tail -1` /opt/app/var/backups/mounthly/ && /usr/bin/find /opt/app/var/backups/daily -iname "*.gz" -atime +30 -type f -delete
+```
